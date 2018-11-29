@@ -20,15 +20,17 @@ attr_accessor  :sender, :receiver, :status, :amount
   end
 
   def execute_transaction
-    if valid?
+    if valid? == true
       @sender.balance -= @amount
       @receiver.balance += @amount
-      @sender.balance
-      @receiver.balance
+      @amount = 0
       @status = "complete"
+      binding.pry
     else
-      "Transaction rejected. Please check your account balance."
+      @status = "Transaction rejected. Please check your account balance."
     end
   end
+
+
 
 end
